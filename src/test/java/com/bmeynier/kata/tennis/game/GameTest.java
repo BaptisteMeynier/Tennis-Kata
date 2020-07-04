@@ -1,5 +1,6 @@
-package com.bmeynier.kata.tennis;
+package com.bmeynier.kata.tennis.game;
 
+import com.bmeynier.kata.tennis.Player;
 import com.bmeynier.kata.tennis.game.Game;
 import com.bmeynier.kata.tennis.game.DeuceScore;
 import com.bmeynier.kata.tennis.game.StandardScore;

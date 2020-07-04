@@ -140,4 +140,59 @@ class MatchIT {
         //THEN
         assertThat(setScore).contains(WIN_SET_STATEMENT);
     }
+
+    @Test
+    void should_play_tie_break_when_user_one_and_two_get_six_games() {
+        //GIVEN
+        Player djokovic = new Player("Novak");
+        Player nadal = new Player("Raphael");
+        List<PointResult> playerOnePoints = Collections.nCopies(20, PLAYER_ONE_WIN);
+        List<PointResult> playerTwoPoints = Collections.nCopies(20, PLAYER_TWO_WIN);
+        List<PointResult> playerOneOneGame = Collections.nCopies(4, PLAYER_ONE_WIN);
+        List<PointResult> playerTwoOneGame = Collections.nCopies(4, PLAYER_TWO_WIN);
+        //WHEN
+
+        Match match = Match
+                .withPlayerOne(djokovic)
+                .withPlayerTwo(nadal)
+                .begin()
+                .playPoints(playerOnePoints)//5 0
+                .playPoints(playerTwoPoints)// 5 5
+                .playPoints(playerOneOneGame)// 6 5
+                .playPoints(playerTwoOneGame)// 6 6 Tie Break
+                .playPoints(Collections.nCopies(6, PLAYER_ONE_WIN))
+                .playPoints(Collections.nCopies(5, PLAYER_TWO_WIN));
+
+        String score = match.displayScore();
+
+        //THEN
+        assertThat(score).contains("6/6 6 5");
+    }
+
+    @Test
+    void should_display_player_one_as_winner_when_user_one_win_tie_break() {
+        //GIVEN
+        Player djokovic = new Player("Novak");
+        Player nadal = new Player("Raphael");
+        List<PointResult> playerOnePoints = Collections.nCopies(20, PLAYER_ONE_WIN);
+        List<PointResult> playerTwoPoints = Collections.nCopies(20, PLAYER_TWO_WIN);
+        List<PointResult> playerOneOneGame = Collections.nCopies(4, PLAYER_ONE_WIN);
+        List<PointResult> playerTwoOneGame = Collections.nCopies(4, PLAYER_TWO_WIN);
+        //WHEN
+
+        Match match = Match
+                .withPlayerOne(djokovic)
+                .withPlayerTwo(nadal)
+                .begin()
+                .playPoints(playerOnePoints)//5 0
+                .playPoints(playerTwoPoints)// 5 5
+                .playPoints(playerOneOneGame)// 6 5
+                .playPoints(playerTwoOneGame)// 6 6 Tie Break
+                .playPoints(Collections.nCopies(7, PLAYER_ONE_WIN));
+
+        String score = match.displayScore();
+
+        //THEN
+        assertThat(score).contains("Novak Win Set Novak Win TieBreak Winner Novak");
+    }
 }

@@ -1,6 +1,6 @@
-package com.bmeynier.kata.tennis;
+package com.bmeynier.kata.tennis.set;
 
-import com.bmeynier.kata.tennis.set.TennisSet;
+import com.bmeynier.kata.tennis.Player;
 import org.junit.jupiter.api.Test;
 
 import static com.bmeynier.kata.tennis.TennisConstant.WIN_SET_STATEMENT;

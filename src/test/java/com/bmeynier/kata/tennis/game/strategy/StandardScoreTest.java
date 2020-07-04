@@ -1,4 +1,4 @@
-package com.bmeynier.kata.tennis;
+package com.bmeynier.kata.tennis.game.strategy;
 
 import com.bmeynier.kata.tennis.game.StandardScore;
 import org.junit.jupiter.api.Test;

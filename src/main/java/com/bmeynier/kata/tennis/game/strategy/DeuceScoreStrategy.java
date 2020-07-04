@@ -13,11 +13,11 @@ public class DeuceScoreStrategy implements ScoreStrategy {
             score = Optional.of(DeuceScore.DEUCE.value());
         }
         if (this.isAdvantage(playerOne, playerTwo)) {
-            Player playerWithHighestPoint = this.getPlayerWithHighestPoint(playerOne, playerTwo);
+            Player playerWithHighestPoint = Player.getPlayerWithHighestPoint(playerOne, playerTwo);
             score = Optional.of(String.format("%s %s", DeuceScore.ADVANTAGE.value(), playerWithHighestPoint.getName()));
         }
         if (this.isWin(playerOne, playerTwo)) {
-            Player playerWithHighestPoint = this.getPlayerWithHighestPoint(playerOne, playerTwo);
+            Player playerWithHighestPoint = Player.getPlayerWithHighestPoint(playerOne, playerTwo);
             score = Optional.of(String.format("%s %s", playerWithHighestPoint.getName(), DeuceScore.WIN.value()));
         }
         return score.orElseThrow(IllegalStateException::new);
@@ -35,7 +35,4 @@ public class DeuceScoreStrategy implements ScoreStrategy {
         return Math.abs(playerOne.getNbPoint() - playerTwo.getNbPoint()) == 2;
     }
 
-    private Player getPlayerWithHighestPoint(Player playerOne, Player playerTwo) {
-        return playerOne.getNbPoint() > playerTwo.getNbPoint() ? playerOne : playerTwo;
-    }
 }

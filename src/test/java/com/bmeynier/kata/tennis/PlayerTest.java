@@ -29,7 +29,7 @@ public class PlayerTest {
     }
 
     @Test
-    void should_add_game_when_player_win_game_with_a_game_number_lower_than_five(){
+    void should_add_game_when_player_win_game_with_a_game_number_lower_than_five() {
         //GIVEN
         Player player = new Player("Novak");
         //WHEN
@@ -47,5 +47,38 @@ public class PlayerTest {
         player = player.winGames(3);
         //THEN
         assertThat(player.getNbGame() - initialNbGame).isEqualTo(3);
+    }
+
+    @Test
+    void should_get_player_one_with_player_one_has_less_point_than_player_two() {
+        //GIVEN
+        Player playerOne = new Player("PlayerOne");
+        Player playerTwo = new Player("PlayerTwo").winGame();
+        //WHEN
+        Player playerWithLowestGames = Player.getPlayerWithLowestGames(playerOne, playerTwo);
+        //THEN
+        assertThat(playerWithLowestGames.getName()).isEqualTo(playerOne.getName());
+    }
+
+    @Test
+    void should_get_player_two_with_player_one_has_less_point_than_player_two() {
+        //GIVEN
+        Player playerOne = new Player("PlayerOne");
+        Player playerTwo = new Player("PlayerTwo").winPoints(5);
+        //WHEN
+        Player playerWithHighestGames = Player.getPlayerWithHighestGames(playerOne, playerTwo);
+        //THEN
+        assertThat(playerWithHighestGames.getName()).isEqualTo(playerTwo.getName());
+    }
+
+    @Test
+    void should_get_player_two_when_get_highest_nb_of_point_with_player_one_has_less_point_than_player_two() {
+        //GIVEN
+        Player playerOne = new Player("PlayerOne");
+        Player playerTwo = new Player("PlayerTwo").winPoints(3);
+        //WHEN
+        Player playerWithHighestPoint = Player.getPlayerWithHighestPoint(playerOne, playerTwo);
+        //THEN
+        assertThat(playerWithHighestPoint.getName()).isEqualTo(playerTwo.getName());
     }
 }

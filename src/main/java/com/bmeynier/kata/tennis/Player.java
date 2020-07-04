@@ -6,6 +6,7 @@ public class Player {
 
     private int nbPoint = 0;
     private int nbGame = 0;
+    private boolean winSet = false;
     private final String name;
 
     public Player(String name) {
@@ -24,6 +25,12 @@ public class Player {
 
     public Player winGame() {
         this.initializePoint();
+        nbGame++;
+        return this;
+    }
+
+    public Player winSet() {
+        winSet = true;
         nbGame++;
         return this;
     }
@@ -48,5 +55,26 @@ public class Player {
     public int getNbGame() {
         return nbGame;
     }
+
+    public static Player getPlayerWithHighestPoint(Player playerOne, Player playerTwo) {
+        return playerOne.getNbPoint() > playerTwo.getNbPoint() ? playerOne : playerTwo;
+    }
+
+    public static Player getPlayerWithLowestPoint(Player playerOne, Player playerTwo) {
+        return playerOne.getNbPoint() < playerTwo.getNbPoint() ? playerOne : playerTwo;
+    }
+
+    public static Player getPlayerWithLowestGames(Player playerOne, Player playerTwo) {
+        return playerOne.getNbGame() < playerTwo.getNbGame() ? playerOne : playerTwo;
+    }
+
+    public static Player getPlayerWithHighestGames(Player playerOne, Player playerTwo) {
+        return playerOne.getNbGame() > playerTwo.getNbGame() ? playerOne : playerTwo;
+    }
+
+    public static Player getWinner(Player playerOne, Player playerTwo) {
+        return playerOne.winSet ? playerOne : playerTwo;
+    }
+
 
 }

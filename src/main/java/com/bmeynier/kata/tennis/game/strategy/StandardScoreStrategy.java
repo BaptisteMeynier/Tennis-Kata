@@ -13,7 +13,7 @@ public class StandardScoreStrategy implements ScoreStrategy {
         if (this.isWin(playerOneScore, playerTwoScore)) {
             score = Optional.of(this.announceWin(playerOne, playerTwo));
         } else {
-            score = Optional.of(this.announceScore(playerOneScore, playerTwoScore));
+            score = Optional.of(this.announceStandardScore(playerOneScore, playerTwoScore));
         }
         return score.orElseThrow(IllegalStateException::new);
     }
@@ -28,7 +28,7 @@ public class StandardScoreStrategy implements ScoreStrategy {
         return String.format("%s %s", highestPlayer.getName(), playerScore.value());
     }
 
-    private String announceScore(StandardScore playerOneScore, StandardScore playerTwoScore) {
+    private String announceStandardScore(StandardScore playerOneScore, StandardScore playerTwoScore) {
         return String.format("%s %s", playerOneScore.value(), playerTwoScore.value());
     }
 
