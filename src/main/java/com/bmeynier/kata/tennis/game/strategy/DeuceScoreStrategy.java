@@ -1,13 +1,13 @@
-package com.bmeynier.kata.tennis.score.strategy;
+package com.bmeynier.kata.tennis.game.strategy;
 
 import com.bmeynier.kata.tennis.Player;
-import com.bmeynier.kata.tennis.score.DeuceScore;
+import com.bmeynier.kata.tennis.game.DeuceScore;
 
 import java.util.Optional;
 
 public class DeuceScoreStrategy implements ScoreStrategy {
 
-    public String sayScore(Player playerOne, Player playerTwo) {
+    public String announceScore(Player playerOne, Player playerTwo) {
         Optional<String> score = Optional.empty();
         if (this.isDeuce(playerOne, playerTwo)) {
             score = Optional.of(DeuceScore.DEUCE.value());

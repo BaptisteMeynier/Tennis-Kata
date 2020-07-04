@@ -1,10 +1,11 @@
-package com.bmeynier.kata.tennis;
+package com.bmeynier.kata.tennis.game;
 
-import com.bmeynier.kata.tennis.score.strategy.DeuceScoreStrategy;
-import com.bmeynier.kata.tennis.score.strategy.ScoreStrategy;
-import com.bmeynier.kata.tennis.score.strategy.StandardScoreStrategy;
+import com.bmeynier.kata.tennis.Player;
+import com.bmeynier.kata.tennis.game.strategy.DeuceScoreStrategy;
+import com.bmeynier.kata.tennis.game.strategy.ScoreStrategy;
+import com.bmeynier.kata.tennis.game.strategy.StandardScoreStrategy;
 
-public class Umpire {
+public class Game {
 
     private static final int DEUCE_STEP = 3;
 
@@ -12,7 +13,7 @@ public class Umpire {
 
     public String announceScore(Player playerOne, Player playerTwo) {
         this.setStrategy(playerOne, playerTwo);
-        return scoreStrategy.sayScore(playerOne, playerTwo);
+        return scoreStrategy.announceScore(playerOne, playerTwo);
     }
 
     private void setStrategy(Player playerOne, Player playerTwo) {

@@ -1,9 +1,11 @@
-package com.bmeynier.kata.tennis.score;
+package com.bmeynier.kata.tennis.game;
 
 import java.util.Arrays;
 
+import static com.bmeynier.kata.tennis.TennisConstant.WIN_GAME;
+
 public enum StandardScore {
-    ZERO("0"), FIFTEEN("15"), THIRTY("30"), FORTY("40"), WIN("Win game");
+    ZERO("0"), FIFTEEN("15"), THIRTY("30"), FORTY("40"), WIN(WIN_GAME);
 
     private String value;
 
@@ -13,6 +15,10 @@ public enum StandardScore {
 
     public String value() {
         return value;
+    }
+
+    public boolean isWin() {
+        return this.equals(WIN);
     }
 
     public static StandardScore getScore(int ordinal) {

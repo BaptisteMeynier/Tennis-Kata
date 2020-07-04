@@ -27,4 +27,25 @@ public class PlayerTest {
         //THEN
         assertThat(player.getNbPoint() - initialNbPoint).isEqualTo(3);
     }
+
+    @Test
+    void should_add_game_when_player_win_game_with_a_game_number_lower_than_five(){
+        //GIVEN
+        Player player = new Player("Novak");
+        //WHEN
+        player = player.winGame();
+        //THEN
+        assertThat(player.getNbGame()).isEqualTo(1);
+    }
+
+    @Test
+    void should_get_three_additional_game_when_player_win_three_games() {
+        //GIVEN
+        Player player = new Player("Player");
+        int initialNbGame = player.getNbGame();
+        //WHEN
+        player = player.winGames(3);
+        //THEN
+        assertThat(player.getNbGame() - initialNbGame).isEqualTo(3);
+    }
 }

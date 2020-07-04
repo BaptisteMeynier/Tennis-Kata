@@ -1,9 +1,9 @@
-package com.bmeynier.kata.tennis.score;
+package com.bmeynier.kata.tennis.game;
 
-import com.bmeynier.kata.tennis.Player;
+import static com.bmeynier.kata.tennis.TennisConstant.WIN_GAME;
 
 public enum DeuceScore {
-    DEUCE("Deuce"), ADVANTAGE("Advantage"), WIN("Win game");
+    DEUCE("Deuce"), ADVANTAGE("Advantage"), WIN(WIN_GAME);
     private String value;
 
     DeuceScore(String value) {

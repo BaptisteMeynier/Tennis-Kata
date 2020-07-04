@@ -1,6 +1,6 @@
 package com.bmeynier.kata.tennis;
 
-import com.bmeynier.kata.tennis.score.StandardScore;
+import com.bmeynier.kata.tennis.game.StandardScore;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
