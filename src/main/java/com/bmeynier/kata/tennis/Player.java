@@ -1,15 +1,31 @@
 package com.bmeynier.kata.tennis;
 
+import java.util.stream.IntStream;
+
 public class Player {
 
-    private Score score = Score.ZERO;
+    private int nbPoint = 0;
+    private final String name;
+
+    public Player(String name) {
+        this.name = name;
+    }
 
     public Player winPoint() {
-        this.score = score.next();
+        nbPoint++;
         return this;
     }
 
-    public Score getScore() {
-        return score;
+    public Player winPoints(int nbOfWinningPoints) {
+        IntStream.range(0, nbOfWinningPoints).forEach(cpt -> this.winPoint());
+        return this;
+    }
+
+    public int getNbPoint() {
+        return nbPoint;
+    }
+
+    public String getName() {
+        return name;
     }
 }
